@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso Exclusivo</title>
+</head>
+<body>
+    <h1>Página de Intercambio Privado 🔒</h1>
+    <p>Solo puedes entrar con el código de acceso.</p>
+
+    {% if error %}
+        <p style="color: red; font-weight: bold;">Error: {{ error }}</p>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('index') }}">
+        <label for="codigo">Ingresa el Código Secreto:</label>
+        <input type="password" id="codigo" name="codigo" required>
+        <button type="submit">Entrar</button>
+    </form>
+</body>
+</html>

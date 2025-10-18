@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Plataforma de Intercambio Seguro | [Nombre de la App]</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="logo-icon">🔗</span> Compartición Segura</h1>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Cerrar Sesión</a>
+        </header>
+
+        <section class="upload-section">
+            <h2>Subir Nuevo Archivo</h2>
+            <form method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data" class="upload-form">
+                <input type="file" name="file" id="file" class="file-input" required> 
+                <button type="submit" class="btn primary-btn">Subir Archivo</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section class="files-section">
+            <h2>Archivos Compartidos</h2>
+            
+            {% if files %}
+                <div class="file-grid">
+                    {% for file in files %}
+                        <div class="file-card">
+                            <span class="file-icon">📄</span>
+                            <a href="{{ url_for('download_file', filename=file) }}" class="file-name">{{ file }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-files">Aún no hay archivos. ¡Carga el primer documento!</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>

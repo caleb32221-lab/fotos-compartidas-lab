@@ -1,0 +1,133 @@
+/* 1. Reset Básico y Tipografía */
+body {
+    font-family: 'Roboto', sans-serif; /* Fuente moderna (asegúrate de incluir el enlace en el HTML) */
+    background-color: #f5f7fa; /* Fondo muy claro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra elegante */
+}
+
+/* 2. Header y Títulos */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #007bff; /* Línea de color primario */
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #007bff; /* Azul corporativo */
+    font-weight: 700;
+    margin: 0;
+}
+
+h2 {
+    font-size: 22px;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.logo-icon {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+/* 3. Botones y Formularios */
+.upload-form {
+    display: flex;
+    gap: 15px; /* Espacio entre el input y el botón */
+    align-items: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.primary-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.logout-btn {
+    color: #dc3545; /* Rojo para advertencia/salir */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.file-input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* 4. Diseño de Archivos (Grid y Tarjetas) */
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Diseño responsivo de tarjetas */
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.file-card {
+    background-color: #f8f9fa; /* Fondo de tarjeta gris claro */
+    border: 1px solid #e9ecef;
+    border-left: 5px solid #007bff; /* Resaltado azul profesional */
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.file-card:hover {
+    background-color: #e9f0f9; /* Cambia al pasar el mouse */
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
+}
+
+.file-icon {
+    font-size: 20px;
+    color: #007bff;
+    margin-right: 15px;
+}
+
+.file-name {
+    text-decoration: none;
+    color: #333;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+}
+
+.no-files {
+    padding: 20px;
+    background-color: #fff3cd; 
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    color: #856404;
+}

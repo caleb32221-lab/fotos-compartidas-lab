@@ -1,0 +1,11 @@
+# Entorno Virtual
+venv/
+
+# Archivos de caché y compilación de Python
+__pycache__/
+*.pyc
+
+# Archivos de sistema de Windows (Causa del error 'Permission denied')
+*.jtx
+*.bak
+*.tmp
