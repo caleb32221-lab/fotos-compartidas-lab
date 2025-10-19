@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = 'TU_CLAVE_SECRETA_SUPER_LARGA_AQUI' 
 
 # Configuración de Archivos
-ACCESO_CODE = "MI-CLAVE-SECRETA-2025" 
+ACCESO_CODE = "ROY" 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'pdf', 'mp4', 'doc', 'docx'}
 
