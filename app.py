@@ -1,10 +1,11 @@
 import os
 # Importamos todo lo necesario para Flask, Sesiones, Archivos y Rutas
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
-from werkzeug.utils import secure_filename # Para nombres de archivo seguros
+from werkzeug.utils import secure_filename 
 
 # 1. Inicializa y Configura
-app = Flask(__name__) # ¡Esta es la variable 'app' que Flask busca!
+# Usamos la inicialización simple para compatibilidad con el servidor Gunicorn
+app = Flask(__name__) 
 app.secret_key = 'TU_CLAVE_SECRETA_SUPER_LARGA_AQUI' 
 
 # Configuración de Archivos
@@ -27,14 +28,15 @@ def allowed_file(filename):
 # ----------------------------------------------------------------------
 
 # --- RUTA 1: Inicio (Verificación de Código) ---
-@app.route('/', methods=['GET', 'POST'])
+# CORRECCIÓN FINAL: Usamos un array para asegurar que la ruta raíz sea accesible en Render
+@app.route(['/', '/index'], methods=['GET', 'POST'])
 def index():
     if session.get('autenticado'):
         return redirect(url_for('upload_page'))
 
     if request.method == 'POST':
         user_code = request.form.get('codigo')
-        
+
         if user_code == ACCESO_CODE:
             session['autenticado'] = True
             return redirect(url_for('upload_page'))
@@ -49,12 +51,12 @@ def index():
 def upload_page():
     if not session.get('autenticado'):
         return redirect(url_for('index'))
-    
+
     try:
         files = os.listdir(app.config['UPLOAD_FOLDER'])
     except FileNotFoundError:
         files = []
-        
+
     return render_template('upload.html', files=files)
 
 
@@ -85,23 +87,21 @@ def upload_file():
 def download_file(filename):
     if not session.get('autenticado'):
         return redirect(url_for('index'))
-    
+
     return send_from_directory(
-        app.config['UPLOAD_FOLDER'], 
-        filename,                    
-        as_attachment=True           
+        app.config['UPLOAD_FOLDER'],
+        filename,
+        as_attachment=True
     )
 
 
 # --- RUTA 5: Cerrar Sesión ---
 @app.route('/logout')
 def logout():
-    session.pop('autenticado', None) 
+    session.pop('autenticado', None)
     return redirect(url_for('index'))
 
 
-# Si corres con 'python app.py' esto asegura que Flask sepa cómo ejecutarse
-if __name__ == '__main__':
-    app.run(debug=True)
-    if __name__ == '__main__':
-    app.run(debug=True)
+# EL BLOQUE DE INICIO LOCAL DEBE ESTAR ELIMINADO PARA COMPATIBILIDAD CON RENDER
+# if __name__ == '__main__':
+#     app.run(debug=True)
