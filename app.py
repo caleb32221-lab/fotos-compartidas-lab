@@ -29,7 +29,7 @@ def allowed_file(filename):
 
 # --- RUTA 1: Inicio (Verificación de Código) ---
 # CORRECCIÓN FINAL: Usamos un array para asegurar que la ruta raíz sea accesible en Render
-@app.route(['/', '/index'], methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     if session.get('autenticado'):
         return redirect(url_for('upload_page'))
