@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Acceso Exclusivo</title>
+    <meta name="google-site-verification" content="9WKjzL6pG1DU6... (Pega tu código real aquí)">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Página de Intercambio Privado 🔒</h1>
-    <p>Solo puedes entrar con el código de acceso.</p>
-
-    {% if error %}
-        <p style="color: red; font-weight: bold;">Error: {{ error }}</p>
-    {% endif %}
-
-    <form method="POST" action="{{ url_for('index') }}">
-        <label for="codigo">Ingresa el Código Secreto:</label>
-        <input type="password" id="codigo" name="codigo" required>
-        <button type="submit">Entrar</button>
-    </form>
+    <div class="container">
+        <h1>Página de Intercambio Privado</h1>
+        
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        
+        <form method="POST" action="{{ url_for('index') }}">
+            <div class="input-group">
+                <label for="codigo">Código de Acceso:</label>
+                <input type="password" id="codigo" name="codigo" required>
+            </div>
+            <button type="submit" class="btn">Entrar</button>
+        </form>
+    </div>
 </body>
 </html>
